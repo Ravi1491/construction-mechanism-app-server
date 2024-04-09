@@ -3,6 +3,7 @@ import 'dotenv/config';
 const { NODE_ENV } = process.env;
 
 const env = NODE_ENV || 'development';
+const ACCESS_TOKEN = 'constructor_mechanism_jwt_key';
 
 export const applicationConfig = {
   isProduction: env === 'base',
@@ -38,5 +39,17 @@ export const applicationConfig = {
     password: process.env.DB_PASSWORD,
     name: process.env.DB_NAME,
     port: process.env.DB_PORT,
+  },
+
+  jwt: {
+    serverToServerAuthSecret:
+      process.env.SERVER_AUTH_JWT_SECRET || 'server-secret',
+    secret: process.env.JWT_SECRET || 'constructor-mechanism-secret',
+    expiresIn: '24h',
+    issuer: 'constructor-mechanism',
+    cookieKey:
+      process.env.NODE_ENV === 'base'
+        ? ACCESS_TOKEN
+        : `${process.env.NODE_ENV}_${ACCESS_TOKEN}`,
   },
 };

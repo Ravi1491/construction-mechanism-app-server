@@ -10,6 +10,10 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
 import GraphQLJSON from 'graphql-type-json';
 import { Dialect } from 'sequelize';
+import { UsersModule } from './users/users.module';
+import { JwtService } from '@nestjs/jwt';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 @Module({
   imports: [
@@ -51,8 +55,16 @@ import { Dialect } from 'sequelize';
       synchronize: true,
       fieldResolverEnhancers: ['guards'],
     }),
+    UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    JwtService,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}
