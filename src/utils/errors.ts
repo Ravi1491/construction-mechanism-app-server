@@ -11,3 +11,15 @@ export class InvalidUser extends HttpException {
     );
   }
 }
+
+export class InvalidRecipientEmail extends HttpException {
+  constructor() {
+    super(
+      {
+        message: 'Invalid Recipient Email',
+        code: 'INVALID_RECIPIENT_EMAIL',
+      },
+      HttpStatus.BAD_REQUEST,
+    );
+  }
+}

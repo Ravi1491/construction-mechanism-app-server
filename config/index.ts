@@ -12,7 +12,7 @@ export const applicationConfig = {
   // App
   app: {
     env: process.env.NODE_ENV,
-    port: process.env.NODE_ENV === 'development' ? '1304' : '3000',
+    port: process.env.PORT === 'development' ? '4000' : '3000',
     feDomain: (() => {
       switch (process.env.NODE_ENV) {
         case 'development':
@@ -51,5 +51,11 @@ export const applicationConfig = {
       process.env.NODE_ENV === 'base'
         ? ACCESS_TOKEN
         : `${process.env.NODE_ENV}_${ACCESS_TOKEN}`,
+  },
+
+  aws: {
+    region: process.env.AWS_REGION,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   },
 };

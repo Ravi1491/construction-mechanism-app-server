@@ -14,6 +14,7 @@ import { UsersModule } from './users/users.module';
 import { JwtService } from '@nestjs/jwt';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/guards/auth.guard';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -41,7 +42,7 @@ import { AuthGuard } from './auth/guards/auth.guard';
       database: applicationConfig.db.name,
       logging: false,
       autoLoadModels: true,
-      synchronize: false,
+      synchronize: true,
     }),
     GraphQLModule.forRoot({
       driver: ApolloDriver,
@@ -55,6 +56,7 @@ import { AuthGuard } from './auth/guards/auth.guard';
       synchronize: true,
       fieldResolverEnhancers: ['guards'],
     }),
+    CommonModule,
     UsersModule,
   ],
   controllers: [AppController],

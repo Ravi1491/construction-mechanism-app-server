@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.10.2",
+    "@aws-sdk/client-ses": "^3.549.0",
     "@nestjs/apollo": "^12.1.0",
     "@nestjs/common": "^10.3.7",
     "@nestjs/config": "^3.2.2",
@@ -35,6 +36,7 @@
     "class-validator": "^0.14.1",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
+    "email-validator": "^2.0.4",
     "graphql": "^16.8.1",
     "graphql-type-json": "^0.3.2",
     "helmet": "^7.1.0",
@@ -46,7 +48,8 @@
     "sequelize": "^6.37.2",
     "sequelize-cli": "^6.6.2",
     "sequelize-typescript": "^2.1.6",
-    "ts-morph": "^21.0.1"
+    "ts-morph": "^21.0.1",
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
